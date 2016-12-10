@@ -1,0 +1,6 @@
++ banco
++ imprimir todos los depositos
++ imprimir solo un deposito
++ imprimir solo los seleccionados
++ todo con mayuscula 
++ negrita

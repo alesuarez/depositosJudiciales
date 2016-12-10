@@ -1,27 +1,23 @@
 package com.kernelelectronic.depositosjudiciales.view;
 
-import com.ibm.icu.util.Calendar;
 import com.kernelelectronic.depositosjudiciales.model.Deposito;
 import com.kernelelectronic.depositosjudiciales.controller.DepositoController;
+import com.kernelelectronic.depositosjudiciales.controller.ReporteController;
 import com.kernelelectronic.depositosjudiciales.utils.NumeroLetra;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Iterator;
+
+import java.time.LocalDate;
 import java.util.List;
 import javax.swing.*;
 
 public class Form extends javax.swing.JFrame {
 
-    private final DepositoController depositoController;
-    private Iterator<Deposito> iteratorDepositos;
-    private Deposito previus;
+    private DepositoController depositoController = DepositoController.getInstance();
+    private LocalDate localDate = LocalDate.now();
 
     public Form() {
         initComponents();
-        depositoController = DepositoController.getInstance();
-        iteratorDepositos = depositoController.getDepositos().iterator();
         rellenarNroCuenta();
-        t_anyo.setText(String.valueOf(GregorianCalendar.getInstance().get(Calendar.YEAR)));
+        rellenarAnyo();
     }
 
     @SuppressWarnings("unchecked")
@@ -46,17 +42,24 @@ public class Form extends javax.swing.JFrame {
         t_nominacion = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         t_juicio = new javax.swing.JTextField();
-        b_buscarJuicio = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         t_cheque = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        t_banco = new javax.swing.JTextField();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         mi_nuevo = new javax.swing.JMenuItem();
         mi_guardar = new javax.swing.JMenuItem();
         mi_modificar = new javax.swing.JMenuItem();
         mi_eliminar = new javax.swing.JMenuItem();
+        jS1 = new javax.swing.JPopupMenu.Separator();
+        jmi_configurar = new javax.swing.JMenuItem();
+        jS2 = new javax.swing.JPopupMenu.Separator();
         exitMenuItem = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
+        informeMenu = new javax.swing.JMenu();
+        jmi_seleccionar = new javax.swing.JMenuItem();
+        jmi_todos = new javax.swing.JMenuItem();
+        jmi_actual = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
@@ -143,110 +146,112 @@ public class Form extends javax.swing.JFrame {
             }
         });
 
-        b_buscarJuicio.setText("Buscar");
-        b_buscarJuicio.addActionListener(new java.awt.event.ActionListener() {
+        jLabel4.setText("Nro de Cheque");
+
+        jLabel10.setText("Banco");
+
+        t_banco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_buscarJuicioActionPerformed(evt);
+                t_bancoActionPerformed(evt);
             }
         });
-
-        jLabel4.setText("Nro de Cheque");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(t_juzgado))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(t_pesos))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel8)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(t_importe, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(t_anyo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(t_expediente))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(t_cuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(B_buscarCuenta)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(t_cheque, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(t_juicio, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(b_buscarJuicio))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(t_nominacion, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel1)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(t_juzgado))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel9)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(t_pesos))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel8)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(t_importe, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel7)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(t_anyo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel6)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(t_expediente))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel5)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(t_cuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(B_buscarCuenta))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel10)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(t_banco))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel4)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(t_cheque, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel3)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(t_juicio, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jLabel2)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(t_nominacion, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(B_buscarCuenta)
-                    .addComponent(t_cuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(t_expediente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(t_anyo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(t_importe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(t_pesos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(t_juzgado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(t_nominacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(t_juicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(b_buscarJuicio))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(t_cheque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel5)
+                                        .addComponent(B_buscarCuenta)
+                                        .addComponent(t_cuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel6)
+                                        .addComponent(t_expediente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(t_banco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel10))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel7)
+                                        .addComponent(t_anyo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel8)
+                                        .addComponent(t_importe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel9)
+                                        .addComponent(t_pesos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel1)
+                                        .addComponent(t_juzgado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel2)
+                                        .addComponent(t_nominacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel3)
+                                        .addComponent(t_juicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel4)
+                                        .addComponent(t_cheque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         fileMenu.setMnemonic('f');
@@ -291,6 +296,11 @@ public class Form extends javax.swing.JFrame {
             }
         });
         fileMenu.add(mi_eliminar);
+        fileMenu.add(jS1);
+
+        jmi_configurar.setText("Configurar");
+        fileMenu.add(jmi_configurar);
+        fileMenu.add(jS2);
 
         exitMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0));
         exitMenuItem.setMnemonic('x');
@@ -304,17 +314,36 @@ public class Form extends javax.swing.JFrame {
 
         menuBar.add(fileMenu);
 
-        jMenu1.setText("Informes");
+        informeMenu.setText("Informes");
 
-        jMenuItem1.setText("Generar PDF");
+        jmi_seleccionar.setText("Imprimir selecionados");
+        jmi_seleccionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_seleccionarActionPerformed(evt);
+            }
+        });
+        informeMenu.add(jmi_seleccionar);
+
+        jmi_todos.setText("Imprimir todos");
+        jmi_todos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_todosActionPerformed(evt);
+            }
+        });
+        informeMenu.add(jmi_todos);
+
+        jmi_actual.setText("Imprimir actual");
+        informeMenu.add(jmi_actual);
+
+        jMenuItem1.setText("Imprimir hoy");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        informeMenu.add(jMenuItem1);
 
-        menuBar.add(jMenu1);
+        menuBar.add(informeMenu);
 
         helpMenu.setMnemonic('h');
         helpMenu.setText("Ayuda");
@@ -335,14 +364,14 @@ public class Form extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -354,8 +383,8 @@ public class Form extends javax.swing.JFrame {
 
     private void mi_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_nuevoActionPerformed
         limpiar();
+        rellenarAnyo();
         t_cuenta.requestFocus();
-
     }//GEN-LAST:event_mi_nuevoActionPerformed
 
     private void mi_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_eliminarActionPerformed
@@ -371,7 +400,6 @@ public class Form extends javax.swing.JFrame {
                         "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-
     }//GEN-LAST:event_mi_eliminarActionPerformed
 
     private void t_expedienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_t_expedienteActionPerformed
@@ -407,10 +435,10 @@ public class Form extends javax.swing.JFrame {
         if (depositoController.agregarDeposito(viewToModel(deposito))) {
             JOptionPane.showMessageDialog(null, "Los datos fueron Guardados con exito");
             t_cuenta.addItem(deposito.getNroCuenta());
-
         } else {
             JOptionPane.showMessageDialog(null, "Algo salio mal. Por Favor verifique "
-                    + "los datos ingresados \n recuerde que no puede haber campos vacions",
+                            + "los datos ingresados \n recuerde que no puede haber campos vacios"
+                            + "\n ni se puede ingresar el mismo deposito.",
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_mi_guardarActionPerformed
@@ -427,36 +455,6 @@ public class Form extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_B_buscarCuentaActionPerformed
 
-    private void b_buscarJuicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_buscarJuicioActionPerformed
-//        String sql;
-//        String juicio;
-//        if (!"".equals(t_juicio.getText())) {
-//            juicio = t_juicio.getText();
-//            sql = "SELECT * FROM depositojudicial WHERE Juicio='" + juicio + "'";
-//
-//            try {
-//                Statement st = cn.createStatement();
-//                ResultSet rs;
-//                rs = st.executeQuery(sql);
-//                rs.next();
-//                t_cuenta.setText(rs.getString("NroCuenta"));
-//                t_expediente.setText(rs.getString("ExpedienteNro"));
-//                t_cheque.setText(rs.getString("NroCheque"));
-//                t_importe.setText(rs.getString("Importe"));
-//                t_juzgado.setText(rs.getString("OrdenJuzgado"));
-//                t_nominacion.setText(rs.getString("Nominacion"));
-//
-//                t_pesos.setText(rs.getString("SonPesos"));
-//                t_anyo.setText(rs.getString("anyo"));
-//
-//            } catch (SQLException ex) {
-//                Logger.getLogger(Form.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Numero de cuenta vacio");
-//        }
-    }//GEN-LAST:event_b_buscarJuicioActionPerformed
-
     private void mi_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_modificarActionPerformed
         int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea Modificar este registro?");
         if (JOptionPane.OK_OPTION == resp) {
@@ -464,41 +462,21 @@ public class Form extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Los datos fueron Modificados con exito");
             } else {
                 JOptionPane.showMessageDialog(null, "Algo salio mal. Por Favor verifique "
-                        + "los datos ingresados",
+                                + "los datos ingresados",
                         "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_mi_modificarActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-
-//        try {
-//
-//            JasperReport report;
-//            String ubicacion = System.getProperty("user.dir") + "/src/Reportes/DepositosJudiciales.jrxml";
-//            String ubicacion2 = System.getProperty("user.dir") + "/src/PDF/";
-//            report = JasperCompileManager.compileReport(ubicacion);
-//            //report=(JasperReport) JRLoader.loadObject(null);
-//            JasperPrint print;
-//            print = JasperFillManager.fillReport(report, null, cn);
-//
-//            // Exporta el informe a PDF
-//            JasperExportManager.exportReportToPdfFile(print, ubicacion2 + "DepositosJudiciales" + ".pdf");
-//            //Para visualizar el pdf directamente desde java
-//            JasperViewer.viewReport(print, false);
-//
-//        } catch (JRException ex) {
-//            Logger.getLogger(Form.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void jmi_seleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_seleccionarActionPerformed
+        new SelectorDeposito().setVisible(true);
+    }
 
     private void t_importeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_t_importeFocusLost
         // falta validadcion por si ponen letras en vez de numeros o un numero no valido..atenti
         try {
             if (t_importe.getText().length() > 0) {
-                rellenarImporte();
+                t_pesos.setText(NumeroLetra.numeroALetra(t_importe.getText()));
             }
         } catch (Exception e) {
             t_importe.setText("");
@@ -507,18 +485,32 @@ public class Form extends javax.swing.JFrame {
     }//GEN-LAST:event_t_importeFocusLost
 
     private void t_cuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_t_cuentaActionPerformed
-        // TODO add your handling code here:
+        t_cuenta.transferFocus();
     }//GEN-LAST:event_t_cuentaActionPerformed
 
-    private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
+    private void t_bancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_t_bancoActionPerformed
+        t_banco.transferFocus();
+    }//GEN-LAST:event_t_bancoActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jmi_todosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_todosActionPerformed
+        ReporteController.printAll();
+    }//GEN-LAST:event_jmi_todosActionPerformed
+
+    private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
         Icon deadComputerIcon = new ImageIcon(getClass().getResource("./deadComputer.jpg"));
         JOptionPane.showMessageDialog(null, "Introducir un numero"
-                , "Ventana",JOptionPane.INFORMATION_MESSAGE, deadComputerIcon);
+                , "Ventana", JOptionPane.INFORMATION_MESSAGE, deadComputerIcon);
     }
+
     void limpiar() {
         t_anyo.setText("");
         t_cuenta.getEditor().setItem("");
         t_expediente.setText("");
+        t_banco.setText("");
         t_importe.setText("");
         t_juicio.setText("");
         t_juzgado.setText("");
@@ -530,14 +522,17 @@ public class Form extends javax.swing.JFrame {
 
     private Deposito viewToModel(Deposito deposito) {
         try {
-            deposito.setAnio(Integer.valueOf(t_anyo.getText()));
+            deposito.setAnio(t_anyo.getText());
             deposito.setNroCuenta(t_cuenta.getEditor().getItem().toString());
             deposito.setNroExpediente(t_expediente.getText());
-            deposito.setImporte(Double.valueOf(t_importe.getText()));
+            deposito.setBanco(t_banco.getText());
+            deposito.setImporte(t_importe.getText());
+            deposito.setPesos(t_pesos.getText());
             deposito.setJuicio(t_juicio.getText());
             deposito.setOrdenJuzgado(t_juzgado.getText());
             deposito.setNominacion(t_nominacion.getText());
             deposito.setNroCheque(t_cheque.getText());
+            deposito.setLocalDate(localDate);
         } catch (Exception e) {
             return null;
         }
@@ -548,16 +543,13 @@ public class Form extends javax.swing.JFrame {
         t_anyo.setText(String.valueOf(deposito.getAnio()));
         t_cuenta.getEditor().setItem(deposito.getNroCuenta());
         t_expediente.setText(deposito.getNroExpediente());
+        t_banco.setText(deposito.getBanco());
         t_importe.setText(String.valueOf(deposito.getImporte()));
+        t_pesos.setText(deposito.getPesos());
         t_juicio.setText(deposito.getJuicio());
         t_juzgado.setText(deposito.getOrdenJuzgado());
         t_nominacion.setText(deposito.getNominacion());
         t_cheque.setText(deposito.getNroCheque());
-        rellenarImporte();
-    }
-
-    private void rellenarImporte() {
-        t_pesos.setText(NumeroLetra.numeroALetra(t_importe.getText()));
     }
 
     private void rellenarNroCuenta() {
@@ -569,14 +561,19 @@ public class Form extends javax.swing.JFrame {
         }
     }
 
+    private void rellenarAnyo() {
+        t_anyo.setText(String.valueOf(localDate.getYear()));
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton B_buscarCuenta;
     private javax.swing.JMenuItem aboutMenuItem;
-    private javax.swing.JButton b_buscarJuicio;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
+    private javax.swing.JMenu informeMenu;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -585,15 +582,21 @@ public class Form extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPopupMenu.Separator jS1;
+    private javax.swing.JPopupMenu.Separator jS2;
+    private javax.swing.JMenuItem jmi_actual;
+    private javax.swing.JMenuItem jmi_configurar;
+    private javax.swing.JMenuItem jmi_seleccionar;
+    private javax.swing.JMenuItem jmi_todos;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem mi_eliminar;
     private javax.swing.JMenuItem mi_guardar;
     private javax.swing.JMenuItem mi_modificar;
     private javax.swing.JMenuItem mi_nuevo;
     private javax.swing.JTextField t_anyo;
+    private javax.swing.JTextField t_banco;
     private javax.swing.JTextField t_cheque;
     private javax.swing.JComboBox<String> t_cuenta;
     private javax.swing.JTextField t_expediente;

@@ -1,35 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DepositosJudiciales" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="317c6c86-ab1f-4790-a38d-7939ea4b629f">
-	<property name="ireport.zoom" value="1.5394743546921223"/>
-	<property name="ireport.x" value="179"/>
-	<property name="ireport.y" value="0"/>
-	<subDataset name="dataset1" uuid="58897c1a-4147-4755-93a0-b31b48c313ee"/>
-	<queryString>
-		<![CDATA[SELECT
-     depositojudicial.`NroCuenta` AS depositojudicial_NroCuenta,
-     depositojudicial.`ExpedienteNro` AS depositojudicial_ExpedienteNro,
-     depositojudicial.`NroCheque` AS depositojudicial_NroCheque,
-     depositojudicial.`Importe` AS depositojudicial_Importe,
-     depositojudicial.`OrdenJuzgado` AS depositojudicial_OrdenJuzgado,
-     depositojudicial.`Nominacion` AS depositojudicial_Nominacion,
-     depositojudicial.`Juicio` AS depositojudicial_Juicio,
-     depositojudicial.`SonPesos` AS depositojudicial_SonPesos,
-     depositojudicial.`anyo` AS depositojudicial_anyo
-FROM
-     `depositojudicial` depositojudicial]]>
-	</queryString>
-	<field name="depositojudicial_NroCuenta" class="java.lang.String"/>
-	<field name="depositojudicial_ExpedienteNro" class="java.lang.String"/>
-	<field name="depositojudicial_NroCheque" class="java.lang.String"/>
-	<field name="depositojudicial_Importe" class="java.lang.String"/>
-	<field name="depositojudicial_OrdenJuzgado" class="java.lang.String"/>
-	<field name="depositojudicial_Nominacion" class="java.lang.String"/>
-	<field name="depositojudicial_Juicio" class="java.lang.String"/>
-	<field name="depositojudicial_SonPesos" class="java.lang.String"/>
-	<field name="depositojudicial_anyo" class="java.lang.String"/>
-	<variable name="depositojudicial_NroCuenta_1" class="java.lang.Integer" calculation="Count">
-		<variableExpression><![CDATA[$F{depositojudicial_NroCuenta}]]></variableExpression>
-	</variable>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DepositosJudiciales" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="317c6c86-ab1f-4790-a38d-7939ea4b629f">
+	<property name="ireport.zoom" value="3.630000000000007"/>
+	<property name="ireport.x" value="1099"/>
+	<property name="ireport.y" value="2296"/>
+	<field name="nroCuenta" class="java.lang.String"/>
+	<field name="nroExpediente" class="java.lang.String"/>
+	<field name="nroCheque" class="java.lang.String"/>
+	<field name="ordenJuzgado" class="java.lang.String"/>
+	<field name="nominacion" class="java.lang.String"/>
+	<field name="juicio" class="java.lang.String"/>
+	<field name="pesos" class="java.lang.String"/>
+	<field name="anio" class="java.lang.String"/>
+	<field name="banco" class="java.lang.String"/>
 	<detail>
 		<band height="802">
 			<staticText>
@@ -51,78 +33,56 @@ FROM
 				<textElement>
 					<font size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["                                                         "+$F{depositojudicial_SonPesos}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["                                                         "+$F{pesos}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="133" y="109" width="211" height="11" uuid="baf8656e-9690-4d26-9668-dbc76bc212fc"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{depositojudicial_OrdenJuzgado}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ordenJuzgado}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="84" y="123" width="261" height="13" uuid="6f8adbfb-22f2-4316-ab0c-f6162833dabc"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{depositojudicial_Nominacion}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nominacion}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="30" y="137" width="313" height="26" uuid="efd85860-f6cf-4d1d-9900-77955ddffae8"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["                                             "+$F{depositojudicial_Juicio}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="437" y="43" width="100" height="14" uuid="d86b104a-4d7a-41c9-92a7-e7c0b5411bbf"/>
-				<textFieldExpression><![CDATA[" \$"+$F{depositojudicial_Importe}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["                                             "+$F{juicio}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="361" y="86" width="176" height="13" uuid="44d4753a-e987-4f93-b273-23f55a5bfa36"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{depositojudicial_NroCuenta}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nroCuenta}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="361" y="114" width="133" height="21" uuid="49eebfef-599c-40ff-bd0e-940b4c15768f"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{depositojudicial_ExpedienteNro}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nroExpediente}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="495" y="114" width="42" height="21" uuid="728c5d11-0634-454f-9e2b-1c949036e4d2"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{depositojudicial_anyo}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{anio}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="363" y="141" width="100" height="16" uuid="3656ecfa-565d-4afc-b013-0fe37cfb2de0"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[NACION]]></text>
-			</staticText>
 			<textField>
 				<reportElement x="405" y="141" width="70" height="20" uuid="65c11ff1-7d44-46ee-a0ea-2d07d6048a48"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{depositojudicial_NroCheque}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="474" y="141" width="63" height="20" uuid="0f782b5a-d40d-4bbc-bbbe-737a409560d5"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{depositojudicial_Importe}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="475" y="198" width="62" height="20" uuid="b1eaccae-09bd-4422-863f-71eeef46f6a6"/>
-				<textFieldExpression><![CDATA[$F{depositojudicial_Importe}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nroCheque}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="90" y="320" width="100" height="11" uuid="9e00b4e0-720f-4ec6-8287-d2e8235e7a64"/>
@@ -136,7 +96,7 @@ FROM
 				<textElement>
 					<font size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["                                                         "+$F{depositojudicial_SonPesos}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["                                                         "+$F{pesos}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="119" y="333" width="115" height="11" uuid="21e10b37-e637-4988-9963-6b407fd9f86f"/>
@@ -150,85 +110,56 @@ FROM
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{depositojudicial_OrdenJuzgado}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ordenJuzgado}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="85" y="385" width="261" height="13" uuid="111301b2-7d05-4f3f-b4cb-b006fe5d552b"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{depositojudicial_Nominacion}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nominacion}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="32" y="398" width="313" height="26" uuid="5fb05c1c-d541-44ec-aa71-ba1393727ab5"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["                                             "+$F{depositojudicial_Juicio}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="439" y="305" width="100" height="14" uuid="01fcba07-f255-4b4c-b74f-72f71d5386ab"/>
-				<textFieldExpression><![CDATA[" \$"+$F{depositojudicial_Importe}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="440" y="569" width="100" height="14" uuid="b157411d-06af-4e7f-a41a-87d4aea56dfa"/>
-				<textFieldExpression><![CDATA[" \$"+$F{depositojudicial_Importe}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["                                             "+$F{juicio}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="360" y="349" width="176" height="13" uuid="e2d53f1d-a40f-4202-93ab-93e507aafc48"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{depositojudicial_NroCuenta}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nroCuenta}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="359" y="611" width="176" height="13" uuid="999ed563-95e0-45a6-af0b-d6e06d00602d"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{depositojudicial_NroCuenta}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nroCuenta}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="359" y="377" width="133" height="21" uuid="3d55db2c-b6e3-42a2-a2ad-3e4e9432b961"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{depositojudicial_ExpedienteNro}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nroExpediente}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="495" y="377" width="42" height="21" uuid="eddfce4f-d7eb-4332-b77a-7278aa995d6a"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{depositojudicial_anyo}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{anio}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="363" y="404" width="100" height="16" uuid="d1a94775-fad7-4ad5-9f6c-3de71089eafe"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[NACION]]></text>
-			</staticText>
 			<textField>
 				<reportElement x="407" y="403" width="70" height="20" uuid="dd36849f-c3e6-4201-8e11-b89d25806b8f"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{depositojudicial_NroCheque}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="473" y="403" width="63" height="20" uuid="e37086cd-3b1e-46b6-81d0-b57c278e12be"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{depositojudicial_Importe}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="473" y="461" width="63" height="20" uuid="29ec1e14-e1ed-408f-b95e-00e8c67f6506"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{depositojudicial_Importe}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nroCheque}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="89" y="584" width="100" height="11" uuid="b56b6f65-366a-4f2c-a4fc-9baba0ceafda"/>
@@ -249,70 +180,70 @@ FROM
 				<textElement>
 					<font size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["                                                         "+$F{depositojudicial_SonPesos}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["                                                         "+$F{pesos}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="132" y="636" width="211" height="11" uuid="1b03fec1-e687-4c3b-b216-b129382bfb21"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{depositojudicial_OrdenJuzgado}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ordenJuzgado}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="84" y="649" width="261" height="13" uuid="5bce6dce-2274-4555-94a5-91fc1cf79709"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{depositojudicial_Nominacion}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nominacion}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="33" y="661" width="313" height="26" uuid="c4ed87f6-569a-41fa-a449-9f94cdb55bce"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA["                                             "+$F{depositojudicial_Juicio}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["                                             "+$F{juicio}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="359" y="639" width="133" height="21" uuid="d9b92354-fbbe-4e5a-824a-b9afba429569"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{depositojudicial_ExpedienteNro}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nroExpediente}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="496" y="640" width="42" height="21" uuid="0f9b1888-7924-4171-b8a9-a0ebbef16caa"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{depositojudicial_anyo}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{anio}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="364" y="666" width="100" height="16" uuid="ab688ca8-20af-4d27-9f1e-f54e5233171e"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<text><![CDATA[NACION]]></text>
-			</staticText>
 			<textField>
 				<reportElement x="405" y="666" width="70" height="20" uuid="2b52d662-4e67-439e-aeed-6c65245b8025"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{depositojudicial_NroCheque}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nroCheque}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="473" y="666" width="63" height="20" uuid="49abd7ad-0394-4018-b3ed-a60e83e18d05"/>
+				<reportElement x="361" y="141" width="70" height="20" uuid="317efddb-7c1f-4d51-90c7-7cb18456e05c"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{depositojudicial_Importe}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{banco}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="472" y="724" width="63" height="20" uuid="4e08116b-d5ea-417b-add3-0f9243b5a765"/>
+				<reportElement x="359" y="403" width="70" height="20" uuid="32ae45d2-10ed-4726-9514-87d6fed31172"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{depositojudicial_Importe}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{banco}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="361" y="666" width="70" height="20" uuid="e6c8e02c-615d-4307-a8d6-8b56c3934662"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{banco}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

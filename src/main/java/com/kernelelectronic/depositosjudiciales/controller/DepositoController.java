@@ -1,6 +1,7 @@
 package com.kernelelectronic.depositosjudiciales.controller;
 
 import com.kernelelectronic.depositosjudiciales.model.Deposito;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -8,21 +9,25 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.NotSerializableException;
+import java.io.ObjectInput;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DepositoController {
 
     private static DepositoController instance = null;
-    private static String FILE = "./depositos.jrs";
-    private List<Deposito> depositos;
+    private static String FILE = "depositos.jrs";
+    private List<Deposito> depositos = new ArrayList<>();
 
     protected DepositoController() {
         this.deserializar();
-        depositos = new ArrayList<>();
     }
 
     public static DepositoController getInstance() {
@@ -30,7 +35,7 @@ public class DepositoController {
     }
 
     public boolean agregarDeposito(Deposito deposito) {
-        if (checkDeposito(deposito) && deposito != null) {
+        if (checkDeposito(deposito) && deposito != null && !depositos.contains(deposito)) {
             depositos.add(deposito);
             serializar();
             return true;
@@ -60,7 +65,6 @@ public class DepositoController {
                     return true;
                 }
             }
-
         } catch (Exception e) {
             return false;
         }
@@ -102,11 +106,11 @@ public class DepositoController {
         File file = new File(FILE);
         try (ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(file)))) {
             oos.writeObject(this.depositos);
+        } catch (FileNotFoundException fnte) {
+            System.out.println("No existe el archivo " + FILE);
         } catch (NotSerializableException nse) {
             System.out.println("La clase Tipo no es serializable");
-        } catch (FileNotFoundException ex) {
-            System.out.println("No existe el archivo " + FILE);
-        } catch (IOException ex) {
+        } catch (IOException ioe) {
             System.out.println("Error al escribir en el archivo " + FILE);
         }
     }
@@ -114,7 +118,8 @@ public class DepositoController {
     private boolean checkDeposito(Deposito deposito) {
         return !(deposito.getNroCuenta() == null || deposito.getJuicio() == null
                 || deposito.getNroCheque() == null || deposito.getNroCuenta() == null
-                || deposito.getNroExpediente() == null || deposito.getOrdenJuzgado() == null);
+                || deposito.getNroExpediente() == null || deposito.getOrdenJuzgado() == null
+                || deposito.getBanco() == null || deposito.getLocalDate() == null);
     }
 
     public List<Deposito> getDepositos() {
@@ -123,5 +128,33 @@ public class DepositoController {
 
     public void setDepositos(List<Deposito> depositos) {
         this.depositos = depositos;
+    }
+
+    private static List<Deposito> readFile() {
+        List<Deposito> depositos = new ArrayList<>();
+        File file = new File(FILE);
+        if (file.exists()) {
+            try (ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(file)))) {
+                depositos = (ArrayList<Deposito>) ois.readObject();
+            } catch (ClassNotFoundException cnfe) {
+                System.out.println("Error al leer del archivo " + FILE);
+            } catch (IOException ioe) {
+                System.out.println("Error al leer del archivo " + FILE);
+            }
+        }
+        return depositos;
+    }
+
+    public static java.util.Collection getAllCollection() {
+
+        java.util.Vector collection = new java.util.Vector();
+
+        List<Deposito> depositos = readFile();
+
+        for (Deposito deposito : depositos) {
+            collection.add(deposito);
+        }
+
+        return collection;
     }
 }

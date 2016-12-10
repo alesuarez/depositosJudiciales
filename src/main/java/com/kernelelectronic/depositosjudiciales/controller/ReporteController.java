@@ -3,25 +3,18 @@ package com.kernelelectronic.depositosjudiciales.controller;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import com.kernelelectronic.depositosjudiciales.model.Deposito;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.design.JRDesignBand;
 import net.sf.jasperreports.engine.design.JRDesignStaticText;
-import net.sf.jasperreports.engine.design.JRDesignTextField;
 import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.export.ooxml.JRDocxExporter;
-import net.sf.jasperreports.engine.type.PositionTypeEnum;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 public class ReporteController {
 
-    public final String FILE = "./DepositosJudiciales.jrxml";
-    public final String FILE_EXAMPLE = "C:\\Users\\laptop\\Documents\\NetBeansProjects\\DepositosJudiciales\\reporteEjemplo.jasper";
+    public static final String FILE = "DepositosJudiciales.jrxml";
 
     private JasperDesign jasperDesign;
 
@@ -32,22 +25,10 @@ public class ReporteController {
 
         return parameters;
     }
+
     public ReporteController() {
-        try {
-            //get report file and then load into jasperDesign
-            jasperDesign = JRXmlLoader.load(FILE);
-            //compile the jasperDesign
-            JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
-            //fill the ready report with data and parameter
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, getReportParameter(), new JRBeanCollectionDataSource(
-                    findReportData()));
-            //view the report using JasperViewer
-            JasperViewer.viewReport(jasperPrint);
-        } catch (JRException e) {
-            e.printStackTrace();
-        }
     }
-    
+
     public void obtenerDetail() {
         JRDesignBand detail = (JRDesignBand) jasperDesign.getAllBands()[0];
         JRElement[] elements = detail.getElements();
@@ -56,7 +37,24 @@ public class ReporteController {
         elementoCero.setX(600);
     }
 
-    public void generarReporteDeposito(Deposito deposito) {
+    public static void printAll() {
+        try {
+            JasperReport report = null;
+            JasperPrint print = null;
+            JasperDesign design = null;
 
+            Map params = new HashMap();
+
+            design = JRXmlLoader.load(FILE);
+
+            report = JasperCompileManager.compileReport(design);
+            print = JasperFillManager.fillReport(report, params, new JRBeanCollectionDataSource(DepositoController.getAllCollection()));
+            JasperExportManager.exportReportToPdfFile(print, "person.pdf");
+            JasperViewer jv = new JasperViewer(print, false);
+            jv.setVisible(true);
+
+        } catch (JRException ex) {
+            System.out.println(ex);
+        }
     }
 }

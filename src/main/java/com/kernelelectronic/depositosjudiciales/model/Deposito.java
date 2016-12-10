@@ -1,17 +1,21 @@
 package com.kernelelectronic.depositosjudiciales.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
-public class Deposito implements Serializable{
-    
+public class Deposito implements Serializable {
+
     private String nroCuenta;
     private String nroExpediente;
-    private int anio;
-    private double importe;
+    private String banco;
+    private String anio;
+    private String importe;
+    private String pesos;
     private String ordenJuzgado;
     private String nominacion;
     private String juicio;
     private String nroCheque;
+    private LocalDate localDate;
 
     public String getNroCuenta() {
         return nroCuenta;
@@ -29,20 +33,36 @@ public class Deposito implements Serializable{
         this.nroExpediente = nroExpediente;
     }
 
-    public int getAnio() {
+    public String getBanco() {
+        return banco;
+    }
+
+    public void setBanco(String banco) {
+        this.banco = banco;
+    }
+
+    public String getAnio() {
         return anio;
     }
 
-    public void setAnio(int anio) {
+    public void setAnio(String anio) {
         this.anio = anio;
     }
 
-    public double getImporte() {
+    public String getImporte() {
         return importe;
     }
 
-    public void setImporte(double importe) {
+    public void setImporte(String importe) {
         this.importe = importe;
+    }
+
+    public String getPesos() {
+        return pesos;
+    }
+
+    public void setPesos(String pesos) {
+        this.pesos = pesos;
     }
 
     public String getOrdenJuzgado() {
@@ -76,6 +96,13 @@ public class Deposito implements Serializable{
     public void setNroCheque(String nroCheque) {
         this.nroCheque = nroCheque;
     }
-    
-}
- 
+
+    public LocalDate getLocalDate() {
+        return localDate;
+    }
+
+    public void setLocalDate(LocalDate localDate) {
+        this.localDate = localDate;
+    }
+
+} 
