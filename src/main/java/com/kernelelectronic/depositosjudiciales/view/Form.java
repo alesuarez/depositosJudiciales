@@ -4,7 +4,11 @@ import com.kernelelectronic.depositosjudiciales.model.Deposito;
 import com.kernelelectronic.depositosjudiciales.controller.DepositoController;
 import com.kernelelectronic.depositosjudiciales.utils.statics.ReporteStatics;
 import com.kernelelectronic.depositosjudiciales.utils.statics.NumeroLetraStatics;
+import com.kernelelectronic.depositosjudiciales.utils.statics.constants.ApplicationConstantsStatic;
 
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.List;
 import javax.swing.*;
@@ -12,12 +16,18 @@ import javax.swing.*;
 public class Form extends javax.swing.JFrame {
 
     private DepositoController depositoController = DepositoController.getInstance();
-    private LocalDate localDate = LocalDate.now();
 
     public Form() {
         initComponents();
         rellenarNroCuenta();
         rellenarAnyo();
+        this.setLocationRelativeTo(null);
+    }
+
+    @Override 
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ApplicationConstantsStatic.ICON_APPLICATION);
+        return retValue;
     }
 
     @SuppressWarnings("unchecked")
@@ -66,6 +76,8 @@ public class Form extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Depositos Judiciales");
+        setIconImage(getIconImage());
+        setLocation(new java.awt.Point(0, 0));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
@@ -479,6 +491,7 @@ public class Form extends javax.swing.JFrame {
     }//GEN-LAST:event_mi_modificarActionPerformed
 
     private void jmi_seleccionarActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        new SelectorDeposito().setVisible(true);
     }
 
     private void t_importeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_t_importeFocusLost
@@ -518,9 +531,7 @@ public class Form extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_configurarActionPerformed
 
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
-        Icon deadComputerIcon = new ImageIcon(getClass().getResource("./deadComputer.jpg"));
-        JOptionPane.showMessageDialog(null, "Introducir un numero"
-                , "Ventana", JOptionPane.INFORMATION_MESSAGE, deadComputerIcon);
+        new About().setVisible(true);
     }
 
     void limpiar() {
@@ -549,7 +560,7 @@ public class Form extends javax.swing.JFrame {
             deposito.setOrdenJuzgado(t_juzgado.getText());
             deposito.setNominacion(t_nominacion.getText());
             deposito.setNroCheque(t_cheque.getText());
-            deposito.setLocalDate(localDate);
+            deposito.setLocalDate(LocalDate.now());
         } catch (Exception e) {
             return null;
         }
@@ -579,7 +590,7 @@ public class Form extends javax.swing.JFrame {
     }
 
     private void rellenarAnyo() {
-        t_anyo.setText(String.valueOf(localDate.getYear()));
+        t_anyo.setText(String.valueOf(LocalDate.now().getYear()));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

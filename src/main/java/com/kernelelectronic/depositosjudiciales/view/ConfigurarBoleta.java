@@ -5,18 +5,26 @@
  */
 package com.kernelelectronic.depositosjudiciales.view;
 
+import com.kernelelectronic.depositosjudiciales.utils.statics.FileSystemStatics;
 import com.kernelelectronic.depositosjudiciales.utils.statics.ReporteStatics;
 import com.kernelelectronic.depositosjudiciales.model.Deposito;
-import com.kernelelectronic.depositosjudiciales.utils.statics.ApplicationConstantsStatic;
-import java.io.File;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import com.kernelelectronic.depositosjudiciales.utils.statics.constants.ApplicationConstantsStatic;
+import java.awt.Image;
+import java.awt.Toolkit;
 import net.sf.jasperreports.engine.JRException;
+
+import javax.swing.*;
 
 public class ConfigurarBoleta extends javax.swing.JFrame {
 
     public ConfigurarBoleta() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(ApplicationConstantsStatic.ICON_APPLICATION));
     }
 
     @SuppressWarnings("unchecked")
@@ -34,6 +42,8 @@ public class ConfigurarBoleta extends javax.swing.JFrame {
         jb_guardarConfiguracion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Configuracion boleta");
+        setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -110,24 +120,24 @@ public class ConfigurarBoleta extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jb_restaurar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jb_guardarConfiguracion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jb_paginaPrueba, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jb_restaurar, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                    .addComponent(jb_paginaPrueba, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jb_guardarConfiguracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jb_guardarConfiguracion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jb_paginaPrueba)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jb_restaurar)))
+                        .addGap(11, 11, 11)
+                        .addComponent(jb_restaurar))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14))
         );
 
@@ -154,6 +164,7 @@ public class ConfigurarBoleta extends javax.swing.JFrame {
         deposito.setNominacion("XXX");
         deposito.setNroCheque("XXXXXXXXXX");
         deposito.setNroCuenta("XXXXXXXXX");
+        deposito.setNroExpediente("XXXXXXXX");
         deposito.setOrdenJuzgado("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         deposito.setPesos("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         ReporteStatics.print(deposito);
@@ -174,10 +185,13 @@ public class ConfigurarBoleta extends javax.swing.JFrame {
     }//GEN-LAST:event_jt_verticalActionPerformed
 
     private void jb_restaurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_restaurarActionPerformed
-         File fileBackup = new File("ale.sas");//ApplicationConstantsStatic.FILE_BACKUP_JASPER_REPORT_JRXML);
-         File fileOld = new File("ale.txt");//ApplicationConstantsStatic.FILE_JASPER_REPORT_JRXML);
-         fileOld.delete();
-         fileBackup.renameTo(fileOld);
+        if (FileSystemStatics.restoreFileFromBackup(ApplicationConstantsStatic.FILE_BACKUP_JASPER_REPORT_JRXML,
+                ApplicationConstantsStatic.FILE_JASPER_REPORT_JRXML)) {
+            JOptionPane.showMessageDialog(null, "Panilla restaurada con exito!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Algo salio mal. Cierre las instancias de Jasper Report. ",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jb_restaurarActionPerformed
 
 

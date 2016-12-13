@@ -1,7 +1,11 @@
 C:\depositosJudiciales\src\main\java\com\kernelelectronic\depositosjudiciales\view\Form.java
+C:\depositosJudiciales\src\main\java\com\kernelelectronic\depositosjudiciales\utils\statics\ReporteStatics.java
 C:\depositosJudiciales\src\main\java\com\kernelelectronic\depositosjudiciales\controller\DepositoController.java
 C:\depositosJudiciales\src\main\java\com\kernelelectronic\depositosjudiciales\DepositosJudicialesApplication.java
+C:\depositosJudiciales\src\main\java\com\kernelelectronic\depositosjudiciales\view\ConfigurarBoleta.java
 C:\depositosJudiciales\src\main\java\com\kernelelectronic\depositosjudiciales\view\SelectorDeposito.java
-C:\depositosJudiciales\src\main\java\com\kernelelectronic\depositosjudiciales\utils\NumeroLetra.java
-C:\depositosJudiciales\src\main\java\com\kernelelectronic\depositosjudiciales\controller\ReporteController.java
+C:\depositosJudiciales\src\main\java\com\kernelelectronic\depositosjudiciales\utils\statics\constants\ApplicationConstantsStatic.java
+C:\depositosJudiciales\src\main\java\com\kernelelectronic\depositosjudiciales\view\About.java
+C:\depositosJudiciales\src\main\java\com\kernelelectronic\depositosjudiciales\utils\statics\NumeroLetraStatics.java
 C:\depositosJudiciales\src\main\java\com\kernelelectronic\depositosjudiciales\model\Deposito.java
+C:\depositosJudiciales\src\main\java\com\kernelelectronic\depositosjudiciales\utils\statics\FileSystemStatics.java

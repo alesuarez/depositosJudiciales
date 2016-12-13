@@ -1,7 +1,7 @@
 package com.kernelelectronic.depositosjudiciales.controller;
 
 import com.kernelelectronic.depositosjudiciales.model.Deposito;
-import com.kernelelectronic.depositosjudiciales.utils.statics.ApplicationConstantsStatic;
+import com.kernelelectronic.depositosjudiciales.utils.statics.constants.ApplicationConstantsStatic;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
