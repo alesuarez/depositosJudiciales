@@ -16,273 +16,273 @@
 	<detail>
 		<band height="802">
 			<staticText>
-				<reportElement x="93" y="57" width="214" height="12" uuid="8ce18ed2-1c38-48f6-815d-ec21bdf81cd7"/>
+				<reportElement x="103" y="47" width="214" height="12" uuid="8ce18ed2-1c38-48f6-815d-ec21bdf81cd7"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[U.T.N FAC. REG. TUC.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="119" y="69" width="142" height="12" uuid="b249d1b7-f9b0-4bfc-a5a2-7d5c7a786df8"/>
+				<reportElement x="129" y="59" width="142" height="12" uuid="b249d1b7-f9b0-4bfc-a5a2-7d5c7a786df8"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[RIVADAVIA 1050 S. M. DE TUC.]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="29" y="81" width="314" height="24" uuid="8f68cb9d-0718-49e1-b857-2d89d2f48a06"/>
+				<reportElement x="39" y="71" width="314" height="24" uuid="8f68cb9d-0718-49e1-b857-2d89d2f48a06"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["                      "+$F{pesos}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="135" y="105" width="208" height="14" uuid="baf8656e-9690-4d26-9668-dbc76bc212fc"/>
+				<reportElement x="145" y="95" width="208" height="14" uuid="baf8656e-9690-4d26-9668-dbc76bc212fc"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ordenJuzgado}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="84" y="119" width="261" height="13" uuid="6f8adbfb-22f2-4316-ab0c-f6162833dabc"/>
+				<reportElement x="94" y="109" width="261" height="13" uuid="6f8adbfb-22f2-4316-ab0c-f6162833dabc"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nominacion}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="31" y="133" width="313" height="26" uuid="efd85860-f6cf-4d1d-9900-77955ddffae8"/>
+				<reportElement x="41" y="123" width="313" height="26" uuid="efd85860-f6cf-4d1d-9900-77955ddffae8"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["                    "+$F{juicio}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="361" y="83" width="176" height="13" uuid="44d4753a-e987-4f93-b273-23f55a5bfa36"/>
+				<reportElement x="371" y="73" width="176" height="13" uuid="44d4753a-e987-4f93-b273-23f55a5bfa36"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nroCuenta}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="361" y="110" width="133" height="21" uuid="49eebfef-599c-40ff-bd0e-940b4c15768f"/>
+				<reportElement x="371" y="100" width="133" height="21" uuid="49eebfef-599c-40ff-bd0e-940b4c15768f"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nroExpediente}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="495" y="110" width="60" height="21" uuid="728c5d11-0634-454f-9e2b-1c949036e4d2"/>
+				<reportElement x="505" y="100" width="60" height="21" uuid="728c5d11-0634-454f-9e2b-1c949036e4d2"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{anio}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="405" y="137" width="70" height="20" uuid="65c11ff1-7d44-46ee-a0ea-2d07d6048a48"/>
+				<reportElement x="415" y="127" width="70" height="20" uuid="65c11ff1-7d44-46ee-a0ea-2d07d6048a48"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nroCheque}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="361" y="137" width="70" height="20" uuid="317efddb-7c1f-4d51-90c7-7cb18456e05c"/>
+				<reportElement x="371" y="127" width="70" height="20" uuid="317efddb-7c1f-4d51-90c7-7cb18456e05c"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{banco}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="437" y="38" width="100" height="20" uuid="042c22d2-62c3-42e8-9650-759c2a3ac7d5"/>
+				<reportElement x="447" y="28" width="100" height="20" uuid="042c22d2-62c3-42e8-9650-759c2a3ac7d5"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["$"+$F{importe}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="475" y="195" width="100" height="20" uuid="a5d2814e-c1cb-4305-884c-86e89d10a2d7"/>
+				<reportElement x="485" y="185" width="100" height="20" uuid="a5d2814e-c1cb-4305-884c-86e89d10a2d7"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["$"+$F{importe}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="28" y="394" width="313" height="26" uuid="84aa8cda-9d25-4fb6-ad8c-5688d6d18880"/>
+				<reportElement x="38" y="384" width="313" height="26" uuid="84aa8cda-9d25-4fb6-ad8c-5688d6d18880"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["                    "+$F{juicio}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="472" y="456" width="100" height="20" uuid="02711efc-5ced-430b-a4cc-da4e41ece420"/>
+				<reportElement x="482" y="446" width="100" height="20" uuid="02711efc-5ced-430b-a4cc-da4e41ece420"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["$"+$F{importe}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="358" y="371" width="133" height="21" uuid="3def449f-c441-4b14-ac0a-e8d738ca8f6a"/>
+				<reportElement x="368" y="361" width="133" height="21" uuid="3def449f-c441-4b14-ac0a-e8d738ca8f6a"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nroExpediente}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="358" y="398" width="70" height="20" uuid="4e44239f-03f5-4940-b134-474848abd011"/>
+				<reportElement x="368" y="388" width="70" height="20" uuid="4e44239f-03f5-4940-b134-474848abd011"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{banco}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="26" y="342" width="314" height="24" uuid="0029c35a-7b80-42bb-869d-c1c560174a80"/>
+				<reportElement x="36" y="332" width="314" height="24" uuid="0029c35a-7b80-42bb-869d-c1c560174a80"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["                      "+$F{pesos}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="358" y="344" width="176" height="13" uuid="8343134e-8e17-4e43-a45f-a8b572f47043"/>
+				<reportElement x="368" y="334" width="176" height="13" uuid="8343134e-8e17-4e43-a45f-a8b572f47043"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nroCuenta}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="132" y="366" width="208" height="14" uuid="8e9e9134-58c4-46df-9c60-35e56900035d"/>
+				<reportElement x="142" y="356" width="208" height="14" uuid="8e9e9134-58c4-46df-9c60-35e56900035d"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ordenJuzgado}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="90" y="318" width="214" height="12" uuid="2105641f-197c-4df7-81d6-8681fbc4f269"/>
+				<reportElement x="100" y="308" width="214" height="12" uuid="2105641f-197c-4df7-81d6-8681fbc4f269"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[U.T.N FAC. REG. TUC.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="116" y="330" width="142" height="12" uuid="2f9f6919-a550-4d41-a59b-43e405f7ed06"/>
+				<reportElement x="126" y="320" width="142" height="12" uuid="2f9f6919-a550-4d41-a59b-43e405f7ed06"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[RIVADAVIA 1050 S. M. DE TUC.]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="81" y="380" width="261" height="13" uuid="fea06b06-f7f0-47c3-a431-4acaa442b843"/>
+				<reportElement x="91" y="370" width="261" height="13" uuid="fea06b06-f7f0-47c3-a431-4acaa442b843"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nominacion}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="434" y="301" width="100" height="20" uuid="af782e58-f232-4e9d-95ba-0ca4dd602979"/>
+				<reportElement x="444" y="291" width="100" height="20" uuid="af782e58-f232-4e9d-95ba-0ca4dd602979"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["$"+$F{importe}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="492" y="371" width="60" height="21" uuid="f6e6d16f-aab1-40c0-b545-f5dd4f63a156"/>
+				<reportElement x="502" y="361" width="60" height="21" uuid="f6e6d16f-aab1-40c0-b545-f5dd4f63a156"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{anio}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="402" y="398" width="70" height="20" uuid="d3e6cbdd-87d8-430a-8e26-2c71d8101fb6"/>
+				<reportElement x="412" y="388" width="70" height="20" uuid="d3e6cbdd-87d8-430a-8e26-2c71d8101fb6"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nroCheque}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="28" y="656" width="313" height="26" uuid="447aed60-3729-4f2e-b963-196165f16e01"/>
+				<reportElement x="38" y="646" width="313" height="26" uuid="447aed60-3729-4f2e-b963-196165f16e01"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["                    "+$F{juicio}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="472" y="718" width="100" height="20" uuid="9c161544-76c7-4f6d-bc88-5ffdd9c60161"/>
+				<reportElement x="482" y="708" width="100" height="20" uuid="9c161544-76c7-4f6d-bc88-5ffdd9c60161"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["$"+$F{importe}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="358" y="633" width="133" height="21" uuid="415a020c-6fdc-4c56-b9ce-01e08cbcb7ca"/>
+				<reportElement x="368" y="623" width="133" height="21" uuid="415a020c-6fdc-4c56-b9ce-01e08cbcb7ca"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nroExpediente}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="358" y="660" width="70" height="20" uuid="be3fbcee-e16c-4b8b-9ec0-c51b5263d46d"/>
+				<reportElement x="368" y="650" width="70" height="20" uuid="be3fbcee-e16c-4b8b-9ec0-c51b5263d46d"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{banco}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="26" y="604" width="314" height="24" uuid="0a5a0bee-1f27-4540-b97a-53b1f54ce793"/>
+				<reportElement x="36" y="594" width="314" height="24" uuid="0a5a0bee-1f27-4540-b97a-53b1f54ce793"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["                      "+$F{pesos}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="358" y="606" width="176" height="13" uuid="0fc6909d-ecbf-4799-a53f-fb39ad43d714"/>
+				<reportElement x="368" y="596" width="176" height="13" uuid="0fc6909d-ecbf-4799-a53f-fb39ad43d714"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nroCuenta}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="132" y="628" width="208" height="14" uuid="0ba3b141-3bb4-46fb-bd89-d404d1c24a59"/>
+				<reportElement x="142" y="618" width="208" height="14" uuid="0ba3b141-3bb4-46fb-bd89-d404d1c24a59"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ordenJuzgado}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="90" y="580" width="214" height="12" uuid="50426aa8-8a56-4df2-b9a7-3f9d6739de47"/>
+				<reportElement x="100" y="570" width="214" height="12" uuid="50426aa8-8a56-4df2-b9a7-3f9d6739de47"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[U.T.N FAC. REG. TUC.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="116" y="592" width="142" height="12" uuid="d49390bf-0cac-4f49-8725-a580290cec0a"/>
+				<reportElement x="126" y="582" width="142" height="12" uuid="d49390bf-0cac-4f49-8725-a580290cec0a"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[RIVADAVIA 1050 S. M. DE TUC.]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="81" y="642" width="261" height="13" uuid="72e602ab-97ef-45d7-9b27-cc8817f80f16"/>
+				<reportElement x="91" y="632" width="261" height="13" uuid="72e602ab-97ef-45d7-9b27-cc8817f80f16"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nominacion}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="434" y="562" width="100" height="20" uuid="b21b8479-e5ec-4478-9019-8535cbfaa444"/>
+				<reportElement x="444" y="552" width="100" height="20" uuid="b21b8479-e5ec-4478-9019-8535cbfaa444"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["$"+$F{importe}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="492" y="633" width="60" height="21" uuid="1e82e30c-5029-48d3-9337-83734b21211c"/>
+				<reportElement x="502" y="623" width="60" height="21" uuid="1e82e30c-5029-48d3-9337-83734b21211c"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{anio}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="402" y="660" width="70" height="20" uuid="1c2beaf9-4299-4ead-bef6-c6dec3194181"/>
+				<reportElement x="412" y="650" width="70" height="20" uuid="1c2beaf9-4299-4ead-bef6-c6dec3194181"/>
 				<textElement>
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>

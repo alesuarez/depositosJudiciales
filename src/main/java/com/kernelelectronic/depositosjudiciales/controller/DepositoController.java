@@ -1,6 +1,7 @@
 package com.kernelelectronic.depositosjudiciales.controller;
 
 import com.kernelelectronic.depositosjudiciales.model.Deposito;
+import com.kernelelectronic.depositosjudiciales.utils.statics.ApplicationConstantsStatic;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -9,21 +10,19 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.NotSerializableException;
-import java.io.ObjectInput;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Vector;
 
 public class DepositoController {
 
     private static DepositoController instance = null;
-    private static String FILE = "depositos.jrs";
+
     private List<Deposito> depositos = new ArrayList<>();
 
     protected DepositoController() {
@@ -90,28 +89,28 @@ public class DepositoController {
     }
 
     private void deserializar() {
-        File file = new File(FILE);
+        File file = new File(ApplicationConstantsStatic.FILE_DEPOSITOS);
         if (file.exists()) {
             try (ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(file)))) {
                 this.depositos = (ArrayList<Deposito>) ois.readObject();
             } catch (ClassNotFoundException cnfe) {
-                System.out.println("Error al leer del archivo " + FILE);
+                System.out.println("Error al leer del archivo " + ApplicationConstantsStatic.FILE_DEPOSITOS);
             } catch (IOException ioe) {
-                System.out.println("Error al leer del archivo " + FILE);
+                System.out.println("Error al leer del archivo " + ApplicationConstantsStatic.FILE_DEPOSITOS);
             }
         }
     }
 
     public void serializar() {
-        File file = new File(FILE);
+        File file = new File(ApplicationConstantsStatic.FILE_DEPOSITOS);
         try (ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(file)))) {
             oos.writeObject(this.depositos);
         } catch (FileNotFoundException fnte) {
-            System.out.println("No existe el archivo " + FILE);
+            System.out.println("No existe el archivo " + ApplicationConstantsStatic.FILE_DEPOSITOS);
         } catch (NotSerializableException nse) {
             System.out.println("La clase Tipo no es serializable");
         } catch (IOException ioe) {
-            System.out.println("Error al escribir en el archivo " + FILE);
+            System.out.println("Error al escribir en el archivo " + ApplicationConstantsStatic.FILE_DEPOSITOS);
         }
     }
 
@@ -132,29 +131,49 @@ public class DepositoController {
 
     private static List<Deposito> readFile() {
         List<Deposito> depositos = new ArrayList<>();
-        File file = new File(FILE);
+        File file = new File(ApplicationConstantsStatic.FILE_DEPOSITOS);
         if (file.exists()) {
             try (ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(file)))) {
                 depositos = (ArrayList<Deposito>) ois.readObject();
             } catch (ClassNotFoundException cnfe) {
-                System.out.println("Error al leer del archivo " + FILE);
+                System.out.println("Error al leer del archivo " + ApplicationConstantsStatic.FILE_DEPOSITOS);
             } catch (IOException ioe) {
-                System.out.println("Error al leer del archivo " + FILE);
+                System.out.println("Error al leer del archivo " + ApplicationConstantsStatic.FILE_DEPOSITOS);
             }
         }
         return depositos;
     }
 
-    public static java.util.Collection getAllCollection() {
-
-        java.util.Vector collection = new java.util.Vector();
+    public static Collection getAllCollection() {
+        Vector collection = new Vector();
 
         List<Deposito> depositos = readFile();
 
         for (Deposito deposito : depositos) {
             collection.add(deposito);
         }
+        return collection;
+    }
 
+    public static Collection getToday() {
+        Vector collection = new Vector();
+
+        List<Deposito> depositos = readFile();
+
+        for (Deposito deposito : depositos) {
+            if (deposito.getLocalDate().equals(LocalDate.now())) {
+                collection.add(deposito);
+            }
+        }
+        return collection;
+    }
+
+    public static Collection printSelected(List<Deposito> depositos) {
+        Vector collection = new Vector();
+
+        for (Deposito deposito : depositos) {
+            collection.add(deposito);
+        }
         return collection;
     }
 }

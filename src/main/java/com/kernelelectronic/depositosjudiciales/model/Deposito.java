@@ -104,5 +104,4 @@ public class Deposito implements Serializable {
     public void setLocalDate(LocalDate localDate) {
         this.localDate = localDate;
     }
-
-} 
+}

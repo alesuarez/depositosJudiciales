@@ -4,3 +4,7 @@
 + imprimir solo los seleccionados
 + todo con mayuscula 
 + negrita
++ grupo de personas con el mismo numero de cheque
+
+
+38 elementos

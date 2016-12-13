@@ -1,4 +1,4 @@
-package com.kernelelectronic.depositosjudiciales.utils;
+package com.kernelelectronic.depositosjudiciales.utils.statics;
 
 /* *
  * NumeroCastellano - Convierte un n�mero a castellano
@@ -21,7 +21,7 @@ package com.kernelelectronic.depositosjudiciales.utils;
  * Boston, MA  02111-1307, USA.
  * 
  */
-public class NumeroLetra {
+public class NumeroLetraStatics {
 
     private static String[] _grupos
             = {"", "millon", "billon", "trillon"};
@@ -31,14 +31,14 @@ public class NumeroLetra {
 
     private static String[] _decena1
             = {"", "once", "doce", "trece", "catorce", "quince",
-                "dieciseis", "diecisiete", "dieciocho", "diecinueve"};
+            "dieciseis", "diecisiete", "dieciocho", "diecinueve"};
     private static String[] _decenas
             = {"", "diez", "veinte", "treinta", "cuarenta", "cincuenta",
-                "sesenta", "setenta", "ochenta", "noventa"};
+            "sesenta", "setenta", "ochenta", "noventa"};
 
     private static String[] _centenas
             = {"", "cien", "doscientos", "trescientos", "cuatrocientos",
-                "quinientos", "seiscientos", "setecientos", "ochocientos", "novecientos"};
+            "quinientos", "seiscientos", "setecientos", "ochocientos", "novecientos"};
 
     public static String millarATexto(int n) {
         if (n == 0) {

@@ -1,6 +1,5 @@
 package com.kernelelectronic.depositosjudiciales;
 
-import com.kernelelectronic.depositosjudiciales.controller.ReporteController;
 import com.kernelelectronic.depositosjudiciales.view.Form;
 
 public class DepositosJudicialesApplication {
@@ -27,6 +26,5 @@ public class DepositosJudicialesApplication {
                 new Form().setVisible(true);
             }
         });
-        ReporteController reporteCotroller = new ReporteController();
     }
 }
