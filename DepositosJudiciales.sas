@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DepositosJudiciales" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="317c6c86-ab1f-4790-a38d-7939ea4b629f">
-	<property name="ireport.zoom" value="1.1566298682886074"/>
+	<property name="ireport.zoom" value="1.1566298682886091"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="378"/>
 	<field name="nroCuenta" class="java.lang.String"/>
 	<field name="nroExpediente" class="java.lang.String"/>
 	<field name="nroCheque" class="java.lang.String"/>
@@ -287,6 +287,27 @@
 					<font fontName="Monospaced" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nroCheque}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="474" y="137" width="70" height="20" uuid="0ce8cc7b-3aba-403f-968b-2b8fa5c6ed49"/>
+				<textElement>
+					<font fontName="Monospaced" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{importe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="473" y="398" width="70" height="20" uuid="da0ed268-e3e5-48cc-9f62-ca008ad657d3"/>
+				<textElement>
+					<font fontName="Monospaced" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{importe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="472" y="660" width="70" height="20" uuid="b2b8dba6-6770-4e69-8417-b953958fffff"/>
+				<textElement>
+					<font fontName="Monospaced" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{importe}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
