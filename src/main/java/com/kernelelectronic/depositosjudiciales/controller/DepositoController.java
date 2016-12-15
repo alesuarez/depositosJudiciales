@@ -1,6 +1,7 @@
 package com.kernelelectronic.depositosjudiciales.controller;
 
 import com.kernelelectronic.depositosjudiciales.model.Deposito;
+import com.kernelelectronic.depositosjudiciales.utils.Navegator;
 import com.kernelelectronic.depositosjudiciales.utils.statics.constants.ApplicationConstantsStatic;
 
 import java.io.BufferedInputStream;
@@ -22,11 +23,12 @@ import java.util.Vector;
 public class DepositoController {
 
     private static DepositoController instance = null;
-
     private List<Deposito> depositos = new ArrayList<>();
+    private Navegator navegator;
 
     protected DepositoController() {
         this.deserializar();
+        navegator = new Navegator(depositos);
     }
 
     public static DepositoController getInstance() {
@@ -37,6 +39,7 @@ public class DepositoController {
         if (checkDeposito(deposito) && deposito != null && !depositos.contains(deposito)) {
             depositos.add(deposito);
             serializar();
+            navegator.addDeposito();
             return true;
         }
         return false;
@@ -61,6 +64,7 @@ public class DepositoController {
                 if (dps.getNroCuenta().equals(deposito.getNroCuenta())) {
                     depositos.remove(dps);
                     serializar();
+                    navegator.removeDeposito();
                     return true;
                 }
             }
@@ -175,5 +179,37 @@ public class DepositoController {
             collection.add(deposito);
         }
         return collection;
+    }
+
+    public Deposito getNext() {
+        return navegator.getNext();
+    }
+
+    public Deposito getPrevious() {
+        return navegator.getPrevious();
+    }
+    
+    public Deposito getFirst() {
+        return navegator.getFirst();
+    }
+    
+    public Deposito getLast() {
+        return navegator.getLast();
+    }
+    
+    public void setActual(int actual) {
+        navegator.setActual(actual);
+    }
+    
+    public int getActual() {
+        return navegator.getActual();
+    }
+    
+    public boolean isFirst() {
+        return navegator.isFirst();
+    }
+    
+    public boolean isLast() {
+        return navegator.isLast();
     }
 }
